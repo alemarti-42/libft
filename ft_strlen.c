@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:51:50 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 19:09:45 by alemarti         ###   ########.fr       */
+/*   Created: 2021/05/18 19:10:20 by alemarti          #+#    #+#             */
+/*   Updated: 2021/05/18 19:11:55 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+size_t	ft_strlen(const char *s)
+{
+	int	i;
 
-/*
- * Misma funcionalidad que ft_memcpy pero puede ser usado en direcciones de 
- * memoria que se superponen.
- * */
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{	
-	if (src < dst)
-	{
-		while (len > 0)
-		{
-			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
-			len++;
-		}
-	}
-	ft_memcpy(dst, src, len);
-	return (dst);
+	i = -1;
+	while (s[++i])
+		;
+	return (i);
 }

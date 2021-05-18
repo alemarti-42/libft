@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:29:46 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 18:40:40 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/18 19:13:20 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	main(void)
 	test_memmove(str1, str2, str3, str4);
 	reset_strs(str1, str2, str3, str4);
 	test_memchr(str1, str2, str3, str4);
+	//TODO: test_memcmp, test_strlen
+	//TODO: Añadir funciones a libft.h
 
 //	system("leaks test.out");
 	return (0);

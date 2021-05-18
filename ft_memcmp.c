@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:51:50 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 19:09:45 by alemarti         ###   ########.fr       */
+/*   Created: 2021/05/18 18:43:02 by alemarti          #+#    #+#             */
+/*   Updated: 2021/05/18 18:52:51 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
 /*
- * Misma funcionalidad que ft_memcpy pero puede ser usado en direcciones de 
- * memoria que se superponen.
- * */
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{	
-	if (src < dst)
+ * memcmp compara los primeros n bytes de las areas de memoria str1 y str2.
+ * 		Si	str1 > str2 	->	>0
+ * 		Si	str1 < str2		->	<0
+ * 		Si	str1 == str2	->	=0
+ */
+int	memcmp(const void *str1, const void *str2, size_t n)
+{
+	int	i;
+
+	i = -1;
+	while (++i < n)
 	{
-		while (len > 0)
-		{
-			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
-			len++;
-		}
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
 	}
-	ft_memcpy(dst, src, len);
-	return (dst);
+	return (0);
 }
