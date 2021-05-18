@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:51:50 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 18:30:22 by alemarti         ###   ########.fr       */
+/*   Created: 2021/05/18 17:07:30 by alemarti          #+#    #+#             */
+/*   Updated: 2021/05/18 17:21:53 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
 /*
- * Misma funcionalidad que ft_memcpy pero puede ser usado en direcciones de 
- * memoria que se superponen.
- * */
-void	*ft_memmove(void *dst, const void *src, size_t len)
+ * Busca la primera ocurrencia de c en los primeros n bytes de str.
+ * Devuelve un puntero al byte encontrado o NULL si no se ha encontrado ninguno
+ */
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-	unsigned char	*swap;
-	
-	if (src < dst)
-	{
-		while (len > 0)
-		{
-			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
-			len++;
-		}
-	}
-	ft_memcpy(dst, src, len);
-	return (dst);
+	int	i;
+
+	i = -1;
+	while (++i < n)
+		if ((unsigned char)&str[i] == (unsigned char)c)
+			return (&str[i]);
+	return (NULL);
 }
