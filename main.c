@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:29:46 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 17:55:41 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/18 18:40:40 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(void)
 	reset_strs(str1, str2, str3, str4);
 	test_memmove(str1, str2, str3, str4);
 	reset_strs(str1, str2, str3, str4);
-//	test_memchr(str1, str2, str3, str4);
+	test_memchr(str1, str2, str3, str4);
 
 //	system("leaks test.out");
 	return (0);
@@ -265,7 +265,7 @@ void	test_memchr(void *str1, void *str2, void *str3, void *str4)
 	offset = 0;
 	x = 41;
 	i = -1;
-	puts("\n\n################### ft_memmove ###################\n");
+	puts("\n\n################### ft_memchr ###################\n");
 	print_char_array(str1, 20);
 	puts("\t");
 	print_char_array(str2, 20);
@@ -281,10 +281,10 @@ void	test_memchr(void *str1, void *str2, void *str3, void *str4)
 		printf("%i caracteres \n%i offset\nc= %c\n\n", n[i], offset, 107);
 		puts("\nSRC: ");
 		print_char_array(str4, 20);
-		printf("\n(sys): %s\n", memchr(str4 , 'l' , 10));
-		puts("\n\nSYS: ");
+		printf("\n\n(sys): %s", memchr(str4 , 'f' , 15));
+		puts("\nSYS: ");
 		print_char_array(str1, 20);
-		printf("\n(usr): %s\n", ft_memchr(str4 , 'l' , 10));
+		printf("\n\n(usr): %s", ft_memchr(str4 , 'f' , 15));
 		puts("\nUSR: ");
 		print_char_array(str2, 20);
 		puts("\n");
