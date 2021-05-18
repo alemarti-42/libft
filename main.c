@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:29:46 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 14:39:52 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:54:45 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	test_memset(void *str1, void *str2);
 void	test_bzero(void *str1, void *str2);
 void	test_memcpy(void *str1, void *str2, void *str3, void *str4);
 void	test_memccpy(void *str1, void *str2, void *str3, void *str4);
+void	test_memmove(void *str1, void *str2, void *str3, void *str4);
 void	print_int_array(int arr[], int n);
 void	print_char_array(char arr[], int n);
 void	reset_strs(char *str1, char *str2, char *str3, char *str4);
@@ -41,7 +42,10 @@ int	main(void)
 	test_memcpy(str1, str2, str3, str4);
 	reset_strs(str1, str2, str3, str4);
 	test_memccpy(str1, str2, str3, str4);
+	reset_strs(str1, str2, str3, str4);
+	test_memmove(str1, str2, str3, str4);
 
+//	system("leaks test.out");
 	return (0);
 }
 void	reset_strs(char *str1, char *str2, char *str3, char *str4)
@@ -193,17 +197,57 @@ void	test_memccpy(void *str1, void *str2, void *str3, void *str4)
 	{
 		//reset_strs(str1, str2, str3, str4);
 		puts("\n\n======================================== char\n");
-		printf("%i caracteres \n%i offset\n", n[i], offset);
-		printf("\n(1)%s\n", memccpy(str1 + offset, str4 + 5, 107, n[i]));
-		printf("\n(2)%s\n", ft_memccpy(str2 + offset, str4 + 5, 107, n[i]));
-		print_char_array(str1, 20);
-		puts("\t");
-		print_char_array(str2, 20);
-		puts("\n");
+		printf("%i caracteres \n%i offset\nc= %c\n\n", n[i], offset, 107);
+		printf("\n(sys): %s\n", memccpy(str1 + offset, str4 + 5, 107, n[i]));
+		printf("\n(usr): %s\n", ft_memccpy(str2 + offset, str4 + 5, 107, n[i]));
+		puts("\nSRC: ");
 		print_char_array(str4, 20);
+		puts("\n\nSYS: ");
+		print_char_array(str1, 20);
+		puts("\nUSR: ");
+		print_char_array(str2, 20);
 		puts("\n");
 		x++;
 		offset -= 4;
+	}
+	puts("\n\n##############################################\n");
+}
+
+void	test_memmove(void *str1, void *str2, void *str3, void *str4)
+{
+	int		i;
+	int		offset;
+	int		x;
+	int		n[] = {0, 3, 5, 8};
+
+	offset = 0;
+	x = 41;
+	i = -1;
+	puts("\n\n################### ft_memmove ###################\n");
+	print_char_array(str1, 20);
+	puts("\t");
+	print_char_array(str2, 20);
+	puts("\n");
+	print_char_array(str4, 20);
+	puts("\n\n\n");
+	while (++i < 4)
+	{
+		ft_memcpy(str1, str4, 20);
+		ft_memcpy(str2, str4, 20);
+		//reset_strs(str1, str2, str3, str4);
+		puts("\n\n======================================== char\n");
+		printf("%i caracteres \n%i offset\nc= %c\n\n", n[i], offset, 107);
+		printf("\n(sys): %s\n", memmove(str1 , str1 + offset,20));
+		printf("\n(usr): %s\n", ft_memmove(str2 , str2 + offset, 20));
+		puts("\nSRC: ");
+		print_char_array(str4, 20);
+		puts("\n\nSYS: ");
+		print_char_array(str1, 20);
+		puts("\nUSR: ");
+		print_char_array(str2, 20);
+		puts("\n");
+		x++;
+		offset += 2;
 	}
 	puts("\n\n##############################################\n");
 }
