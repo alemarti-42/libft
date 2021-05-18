@@ -6,12 +6,16 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 22:32:04 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 16:12:43 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:00:26 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+ * Copia n bytes de una direccion de memoria en otra. Si las direcciones de
+ * memoria se superponen se comportará de manera indefinida.
+ */
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	int	i;
