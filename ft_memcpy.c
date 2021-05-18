@@ -6,11 +6,18 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 22:32:04 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/17 22:40:35 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/18 13:08:54 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void *memcpy(void *dest, const void * src, size_t n)
+#include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-//TODO
+	int	i;
+
+	i = -1;
+	while (++i < n)
+		((char *)dst)[i] = ((char *)src)[i];
+	return (dst);
 }

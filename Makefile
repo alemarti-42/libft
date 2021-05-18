@@ -6,13 +6,14 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/05/18 11:56:09 by alemarti         ###   ########.fr        #
+#    Updated: 2021/05/18 12:59:42 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 SRCS	= ft_memset.c \
-		  ft_bzero.c 
+		  ft_bzero.c \
+		  ft_memcpy.c
 OBJS	= ${SRCS:.c=.o}
 NAME	= libft.a
 CC		= gcc
