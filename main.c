@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:29:46 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 13:08:12 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/18 14:39:52 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,45 @@
 #include<stddef.h>
 #include "libft.h"
 
-void	test_memset(void);
-void	test_bzero(void);
-void	test_memcpy(void);
+void	test_memset(void *str1, void *str2);
+void	test_bzero(void *str1, void *str2);
+void	test_memcpy(void *str1, void *str2, void *str3, void *str4);
+void	test_memccpy(void *str1, void *str2, void *str3, void *str4);
 void	print_int_array(int arr[], int n);
 void	print_char_array(char arr[], int n);
+void	reset_strs(char *str1, char *str2, char *str3, char *str4);
 
 int	main(void)
 {
-	test_memset();
-	test_bzero();
-	test_memcpy();
+	char	*str1, *str2, *str3, *str4;
+	int		i;
+
+	str1 = malloc(20);
+	str2 = malloc(20);
+	str3 = malloc(20);
+	str4 = malloc(20);
+	
+	reset_strs(str1, str2, str3, str4);
+	test_memset(str1, str2);
+	test_bzero(str1, str2);
+	test_memcpy(str1, str2, str3, str4);
+	reset_strs(str1, str2, str3, str4);
+	test_memccpy(str1, str2, str3, str4);
 
 	return (0);
+}
+void	reset_strs(char *str1, char *str2, char *str3, char *str4)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 20)
+	{
+		str1[i] = '-';
+		str2[i] = '-';
+		str3[i] = '-';
+		str4[i] = i + 'a';
+	}
 }
 void	print_int_array(int arr[], int n)
 {
@@ -49,10 +75,8 @@ void	print_char_array(char arr[], int n)
 		printf("%c ", arr[i]);
 }
 
-void	test_memset(void)
+void	test_memset(void *str1, void *str2)
 {
-	char	str1[20] = "____________________",
-		   	str2[20] = "____________________";
 	int		n[] = {0, 3, 5, 5};
 	int		i;
 	int		x;
@@ -81,10 +105,8 @@ void	test_memset(void)
 	puts("\n\n##############################################\n");
 }
 
-void	test_bzero(void)
+void	test_bzero(void *str1, void *str2)
 {
-	char	str1[20] = "____________________",
-		   	str2[20] = "____________________";
 	int		n[] = {0, 3, 5, 8};
 	int		i;
 	int		x;
@@ -114,26 +136,13 @@ void	test_bzero(void)
 	puts("\n\n##############################################\n");
 }
 
-void	test_memcpy(void)
+void	test_memcpy(void *str1, void *str2, void *str3, void *str4)
 {
-	char	*str1, *str2, *str3, *str4;
 	int		i;
 	int		offset;
 	int		x;
 	int		n[] = {0, 3, 5, 8};
 
-	str1 = malloc(20);
-	str2 = malloc(20);
-	str3 = malloc(20);
-	str4 = malloc(20);
-	i = -1;
-	while (++i < 20)
-	{
-		str1[i] = '-';
-		str2[i] = i + 'a';
-		str3[i] = '-';
-		str4[i] = i + 'a';
-	}
 	offset = 15;
 	x = 41;
 	i = -1;
@@ -142,26 +151,59 @@ void	test_memcpy(void)
 	puts("\t");
 	print_char_array(str2, 20);
 	puts("\n");
-	print_char_array(str3, 20);
-	puts("\t");
 	print_char_array(str4, 20);
 	puts("\n\n\n");
 	while (++i < 4)
 	{
 		puts("\n\n======================================== char\n");
 		printf("%i caracteres \n%i offset\n", n[i], offset);
-		memcpy(str1 + offset, str2 + offset, n[i]);
-		ft_memcpy(str3 + offset, str4 + offset, n[i]);
+		memcpy(str1 + offset, str4 , n[i]);
+		ft_memcpy(str2 + offset, str4 , n[i]);
 		print_char_array(str1, 20);
 		puts("\t");
 		print_char_array(str2, 20);
 		puts("\n");
-		print_char_array(str3, 20);
-		puts("\t");
 		print_char_array(str4, 20);
 		puts("\n");
 		x++;
-		offset -= 3;
+		offset -= 4;
+	}
+	puts("\n\n##############################################\n");
+}
+
+
+void	test_memccpy(void *str1, void *str2, void *str3, void *str4)
+{
+	int		i;
+	int		offset;
+	int		x;
+	int		n[] = {0, 3, 5, 8};
+
+	offset = 15;
+	x = 41;
+	i = -1;
+	puts("\n\n################### ft_memccpy ###################\n");
+	print_char_array(str1, 20);
+	puts("\t");
+	print_char_array(str2, 20);
+	puts("\n");
+	print_char_array(str4, 20);
+	puts("\n\n\n");
+	while (++i < 4)
+	{
+		//reset_strs(str1, str2, str3, str4);
+		puts("\n\n======================================== char\n");
+		printf("%i caracteres \n%i offset\n", n[i], offset);
+		printf("\n(1)%s\n", memccpy(str1 + offset, str4 + 5, 107, n[i]));
+		printf("\n(2)%s\n", ft_memccpy(str2 + offset, str4 + 5, 107, n[i]));
+		print_char_array(str1, 20);
+		puts("\t");
+		print_char_array(str2, 20);
+		puts("\n");
+		print_char_array(str4, 20);
+		puts("\n");
+		x++;
+		offset -= 4;
 	}
 	puts("\n\n##############################################\n");
 }

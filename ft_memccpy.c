@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 21:01:38 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 14:03:55 by alemarti         ###   ########.fr       */
+/*   Created: 2021/05/18 13:23:14 by alemarti          #+#    #+#             */
+/*   Updated: 2021/05/18 14:33:40 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include"libft.h"
 
-# include<stddef.h>
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+{
+	int	i;
 
-void	*ft_memset(void *ptr, int x, size_t n);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memccpy(void *dst, const void *src, int c, size_t m);
-
-#endif
+	i = -1;
+	while (++i < n)
+	{
+		*(char *)&dst[i] = *(char *)&src[i];
+		if (*(char *)&src[i] == (char)c)
+			return (&dst[i + 1]);
+	}
+	return (NULL);
+}
