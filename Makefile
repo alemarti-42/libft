@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/05/19 15:35:50 by alemarti         ###   ########.fr        #
+#    Updated: 2021/05/19 16:31:39 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRCS	= ft_memset.c \
 		  ft_isprint.c  \
 		  ft_toupper.c  \
 		  ft_tolower.c  \
+		  ft_calloc.c \
+		  ft_strdup.c \
 
 OBJS	= ${SRCS:.c=.o}
 NAME	= libft.a

@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:09:26 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/19 13:22:52 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/19 16:29:31 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	int	i;
-	int j;
+	int	j;
 	int	dstlen;
 	int	max;
 

@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:41:39 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/19 15:26:13 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/19 16:30:26 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		{
 			j++;
 			if (needle[j] == 0)
-				return ((char *)&haystack[i]);	
+				return ((char *)&haystack[i]);
 		}
 	}
 	j = 0;

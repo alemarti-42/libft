@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:00:11 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/19 15:23:19 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/19 16:29:55 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	int	i;
 
-	i  = -1;
+	i = -1;
 	while (++i < dstsize - 1 && src[i])
 		dst[i] = src[i];
 	dst[i] = 0;
