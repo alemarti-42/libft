@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:59:59 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/19 16:53:56 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/19 19:09:40 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	*calloc(size_t count, size_t size)
 	sizebytes = size * count;
 	res = malloc(sizebytes);
 	while (++i < sizebytes)
-		res[i] = 0;
+		*(char *)&res[i] = 0;
 	return (res);
 }
