@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 18:43:02 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/18 18:52:51 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/19 15:19:56 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
  * 		Si	str1 < str2		->	<0
  * 		Si	str1 == str2	->	=0
  */
-int	memcmp(const void *str1, const void *str2, size_t n)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
 	int	i;
 
 	i = -1;
 	while (++i < n)
 	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
+		if (*(unsigned char *)&str1[i] != *(unsigned char *)&str2[i])
+			return (*(unsigned char *)&str1[i] - *(unsigned char *)&str2[i]);
 	}
 	return (0);
 }

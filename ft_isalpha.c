@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 19:10:20 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/19 15:20:28 by alemarti         ###   ########.fr       */
+/*   Created: 2021/05/19 14:38:28 by alemarti          #+#    #+#             */
+/*   Updated: 2021/05/19 14:41:58 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-size_t	ft_strlen(const char *s)
+/*
+ * Si el caracter es alfabetico devuelve su valor ascii, si no, devuelve 0.
+ */
+int	ft_isalpha(int c)
 {
-	int	i;
-
-	i = -1;
-	while (s[++i])
-		;
-	return (i);
+	if ((c > 101 && c < 132) || (c > 141 && c < 172))
+		return (c);
+	return (0);
 }
