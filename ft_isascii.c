@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 14:38:28 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/19 14:52:06 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/20 16:53:59 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 int	ft_isascii(int c)
 {
 	if ((c >= 0 && c <= 127))
-		return (c);
-	return (0);
+		return (c + 1);
+	return (NULL);
 }
