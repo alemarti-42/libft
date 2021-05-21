@@ -6,23 +6,24 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:59:59 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/19 19:09:40 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/21 15:19:55 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdlib.h>
 #include"libft.h"
 
-void	*calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int		i;
-	int		sizebytes;
-	void	*res;
+	size_t		i;
+	size_t		sizebytes;
+	void		*res;
 
-	i = -1;
+	i = 0;
 	sizebytes = size * count;
 	res = malloc(sizebytes);
-	while (++i < sizebytes)
-		*(char *)&res[i] = 0;
+	if (!res)
+		return (0);
+	ft_memset(res, 0, sizebytes);
 	return (res);
 }
