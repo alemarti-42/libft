@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 21:01:38 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/21 20:22:41 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/22 19:43:39 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include<stddef.h>
+#include<stdlib.h>
 
 void	*ft_memset(void *ptr, int x, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -40,5 +41,6 @@ int		ft_tolower(int c);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

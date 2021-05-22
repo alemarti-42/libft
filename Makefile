@@ -6,26 +6,26 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/05/21 19:54:38 by alemarti         ###   ########.fr        #
+#    Updated: 2021/05/22 19:42:38 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS	= ft_memset.c \
-		  ft_bzero.c \
-		  ft_memcpy.c \
-		  ft_memccpy.c \
-		  ft_memmove.c \
-		  ft_memchr.c \
-		  ft_memcmp.c  \
-		  ft_strlen.c  \
+SRCS	= ft_memset.c	 \
+		  ft_bzero.c 	\
+		  ft_memcpy.c 	\
+		  ft_memccpy.c 	\
+		  ft_memmove.c 	\
+		  ft_memchr.c 	\
+		  ft_memcmp.c  	\
+		  ft_strlen.c  	\
 		  ft_strlcpy.c  \
 		  ft_strlcat.c  \
-		  ft_strchr.c  \
+		  ft_strchr.c  	\
 		  ft_strrchr.c  \
 		  ft_strnstr.c  \
 		  ft_strncmp.c  \
-		  ft_atoi.c  \
+		  ft_atoi.c  	\
 		  ft_isalpha.c  \
 		  ft_isdigit.c  \
 		  ft_isalnum.c  \
@@ -33,9 +33,10 @@ SRCS	= ft_memset.c \
 		  ft_isprint.c  \
 		  ft_toupper.c  \
 		  ft_tolower.c  \
-		  ft_calloc.c \
-		  ft_strdup.c \
-		  ft_substr.c \
+		  ft_calloc.c 	\
+		  ft_strdup.c 	\
+		  ft_substr.c 	\
+		  ft_strjoin.c
 
 
 OBJS	= ${SRCS:.c=.o}
@@ -56,13 +57,11 @@ clean:
 
 fclean:		clean
 	@${RM} ${NAME}
+
 test:
 	@${CC} ${FLAGS} ${SRCS} main.c -o test.out
 	@./test.out
 	@rm test.out
 
-so:
-	$(CC) -fPIC $(CFLAGS) $(SRCS)
-	gcc -shared -o libft.so $(OBJS)
-
 re:		fclean all
+
