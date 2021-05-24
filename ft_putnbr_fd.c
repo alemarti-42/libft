@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/24 17:26:28 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/24 19:24:02 by alemarti         ###   ########.fr       */
+/*   Created: 2021/05/24 19:06:08 by alemarti          #+#    #+#             */
+/*   Updated: 2021/05/24 19:22:23 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
+	long	nb;
 
-	i = -1;
-	if (!fd || !s)
-		return ;
-	while (s[++i])
-		write(fd, &s[i], 1);
-	write(fd, "\n", 1);
+	nb = n;
+	if (nb < 0)
+	{
+		write (fd, "-", 1);
+		nb *= -1;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
+	else
+		ft_putchar_fd(nb + '0', fd);
 }
