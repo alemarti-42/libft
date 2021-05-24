@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 15:52:16 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/24 16:00:48 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:05:36 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = -1;
+	if (!fd || !s)
+		return ;
 	while (s[++i])
 	{
 		write(fd, &s[i], 1);
