@@ -6,40 +6,56 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 20:55:49 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/19 21:54:17 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:05:18 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-char	*recursive(unsigned int n, int size, char *str, int sign)
+size_t	nsize(long n)
 {
-	char	nb;
+	size_t	i;
 
-	nb = n % 10;
-	if (n > 10)
-	{
-		str = recursive(n / 10, size++, str++, sign);
-	}
-	else
-		str = (char *)malloc(size);				// quizas ¿? size + 1 ¿?
-	return (nb);
-
-}
-char	*ft_itoa(int n)
-{
-	int		size;
-	int		sign;
-	char	*str;
-
-	size = -1;
-	sign = 1;
+	i = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 	{
-		sign = -1;
-		size++;
+		n *= -1;
+		i++;
 	}
-	recursive(n / 10, ++size, str, sign);	
-	str = (char *)malloc(size);
+	while (n > 0)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
 }
 
+char	*ft_itoa(int n)
+{
+	char	*res;
+	size_t	size;
+	long	nb;
+
+	size = nsize(n);
+	res = (char *)malloc(size + 1);
+	nb = n;
+	if (!res)
+		return (NULL);
+	if (nb < 0)
+	{
+		res[0] = '-';
+		nb *= -1;
+	}
+	res[size] = 0;
+	size--;
+	while (nb > 9)
+	{
+		res[size] = (nb % 10) + '0';
+		nb /= 10;
+		size--;
+	}
+	res[size] = nb + '0';
+	return (res);
+}
