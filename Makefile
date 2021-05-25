@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/05/25 18:22:43 by alemarti         ###   ########.fr        #
+#    Updated: 2021/05/25 19:11:15 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,9 @@ SRCS	= ft_memset.c	 	\
 		  ft_lstlast.c		\
 		  ft_lstadd_back.c	\
 		  ft_lstdelone.c	\
-		  ft_lstclear.c
+		  ft_lstclear.c		\
+		  ft_lstiter.c		\
+		  ft_lstmap.c
 
 
 
