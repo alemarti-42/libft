@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/05/25 19:11:15 by alemarti         ###   ########.fr        #
+#    Updated: 2021/05/25 20:18:03 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ SRCS	= ft_memset.c	 	\
 		  ft_putchar_fd.c	\
 		  ft_putstr_fd.c	\
 		  ft_putendl_fd.c	\
-		  ft_putnbr_fd.c	\
-		  ft_lstnew.c		\
+		  ft_putnbr_fd.c	
+SRCS_B	= ft_lstnew.c		\
 		  ft_lstadd_front.c	\
 		  ft_lstsize.c		\
 		  ft_lstlast.c		\
@@ -56,8 +56,8 @@ SRCS	= ft_memset.c	 	\
 		  ft_lstmap.c
 
 
-
 OBJS	= ${SRCS:.c=.o}
+OBJS_B	= ${SRCS_B:.c=.o}
 NAME	= libft.a
 CC		= gcc
 RM		= rm -f
@@ -71,15 +71,19 @@ ${NAME}:	${OBJS}
 
 
 clean:	
-	@${RM} ${OBJS} 
+			@${RM} ${OBJS} ${OBJS_B}
 
 fclean:		clean
-	@${RM} ${NAME}
+			@${RM} ${NAME}
 
 test:
-	@${CC} ${FLAGS} ${SRCS} main.c -o test.out
-	@./test.out
-	@rm test.out
+			@${CC} ${FLAGS} ${SRCS} main.c -o test.out
+			@./test.out
+			@rm test.out
 
-re:		fclean all
+bonus:		${OBJS} ${OBJS_B}
+			ar rc ${NAME} ${OBJS} ${OBJS_B}
+			ranlib ${NAME}
+
+re:			fclean all
 
