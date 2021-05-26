@@ -12,10 +12,6 @@
 
 #include"libft.h"
 
-/*
- * Misma funcionalidad que ft_memcpy pero puede ser usado en direcciones de 
- * memoria que se superponen.
- * */
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {	
 	if (src < dst)

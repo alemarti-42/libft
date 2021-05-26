@@ -12,9 +12,6 @@
 
 #include"libft.h"
 
-/*
- * Si el caracter es alfanumerico devuelve su valor ascii, si no, devuelve 0.
- */
 int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) + ft_isdigit(c));

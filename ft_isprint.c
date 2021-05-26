@@ -12,9 +12,6 @@
 
 #include"libft.h"
 
-/*
- * Si el caracter es imprimible devuelve su valor ascii, si no, devuelve 0.
- */
 int	ft_isprint(int c)
 {
 	if ((c >= 32 && c <= 126))

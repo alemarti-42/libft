@@ -12,9 +12,6 @@
 
 #include"libft.h"
 
-/*
- * Si el caracter es ASCII devuelve su valor ascii, si no, devuelve 0.
- */
 int	ft_isascii(int c)
 {
 	if ((c >= 0 && c <= 127))

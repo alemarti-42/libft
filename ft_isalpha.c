@@ -12,9 +12,6 @@
 
 #include"libft.h"
 
-/*
- * Si el caracter es alfabetico devuelve su valor ascii, si no, devuelve 0.
- */
 int	ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))

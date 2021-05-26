@@ -13,10 +13,9 @@
 #include"libft.h"
 
 /*
- * memcmp compara los primeros n bytes de las areas de memoria str1 y str2.
- * 		Si	str1 > str2 	->	>0
- * 		Si	str1 < str2		->	<0
- * 		Si	str1 == str2	->	=0
+ * 		str1 > str2 	->	>0
+ * 		str1 < str2		->	<0
+ * 		str1 == str2	->	=0
  */
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {

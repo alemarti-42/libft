@@ -12,7 +12,7 @@
 
 #include"libft.h"
 
-size_t	nsize(long n)
+static size_t	nsize(long n)
 {
 	size_t	i;
 

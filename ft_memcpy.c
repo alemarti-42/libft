@@ -10,12 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-/*
- * Copia n bytes de una direccion de memoria en otra. Si las direcciones de
- * memoria se superponen se comportará de manera indefinida.
- */
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;

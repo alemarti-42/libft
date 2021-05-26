@@ -11,10 +11,7 @@
 /* ************************************************************************** */
 
 #include"libft.h"
-/*
- * Si el caracter es un digito 0 -> 9 devuelve su valor ascii,
- * si no, devuelve 0.
- */
+
 int	ft_isdigit(int c)
 {
 	if (c >= 48 && c <= 57)

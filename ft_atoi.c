@@ -12,7 +12,7 @@
 
 #include"libft.h"
 
-int	check_size(long res, int sign);
+static int	check_size(long res, int sign);
 
 int	ft_atoi(const char *str)
 {
@@ -42,7 +42,7 @@ int	ft_atoi(const char *str)
 	return ((int)res);
 }
 
-int	check_size(long res, int sign)
+static int	check_size(long res, int sign)
 {
 	if (res > 2147483647 && sign == 1)
 		return (-1);
