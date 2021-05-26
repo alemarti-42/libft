@@ -6,75 +6,78 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 20:19:09 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/25 17:51:27 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/05/26 16:16:00 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
 static int		count_words(const char *s, char c);
-int				aux(const char *s, char **res, char c);
+static char		*stralloc(const char *s, char c);
 
 char	**ft_split(const char *s, char c)
 {
-	char		**res;
+	char	**res;
+	int		i;
+	int		is_separator;
+	int		count;
 
+	i = -1;
+	is_separator = 1;
+	count = 0;
 	if (!s)
 		return (NULL);
 	res = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!res)
 		return (NULL);
-	res[aux(s, res, c)] = NULL;
+	while (s[++i])
+	{
+		if (is_separator == 1 && s[i] != c)
+			res[count++] = stralloc(&s[i], c);
+		if (s[i] == c)
+			is_separator = 1;
+		else
+			is_separator = 0;
+	}
+	res[count_words(s, c)] = 0;
 	return (res);
 }
 
 static int	count_words(const char *s, char c)
 {
-	int	count;
-	int	is_space;
 	int	i;
+	int	count;
+	int	is_separator;
 
 	count = 0;
-	is_space = 1;
+	is_separator = 1;
 	i = 0;
 	while (s[i])
 	{
-		if (is_space == 0 && s[i] == c)
-			is_space = 1;
-		if (is_space == 1 && s[i] != c)
-		{
-			is_space = 0;
+		if (is_separator == 1 && s[i] != c)
 			count++;
-		}
+		if (s[i] == c)
+			is_separator = 1;
+		else
+			is_separator = 0;
 		i++;
 	}
 	return (count);
 }
 
-int	aux(const char *s, char **res, char c)
+static char	*stralloc(const char *s, char c)
 {
+	char	*res;
 	int		count;
-	size_t	i;
-	int		j;
+	int		i;
 
 	count = 0;
 	i = 0;
-	j = 0;
-	while (i < ft_strlen(s) && count < count_words(s, c))
+	while (s[i] != c && s[i])
 	{
-		while (s[i] == c)
-			i++;
-		j = 0;
-		while (s[i + j] != c && s[i + j] && (i + j) < ft_strlen(s))
-			j++;
-		if ((i + j) > ft_strlen(s))
-			break ;
-		res[count] = (char *)malloc(j + 1);
-		if (!res[count])
-			return (0);
-		res[count] = ft_substr(s, i, j);
-		i += j ;
 		count++;
+		i++;
 	}
-	return (count);
+	res = ft_substr(s, 0, count);
+	return (res);
 }
