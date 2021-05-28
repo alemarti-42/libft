@@ -10,27 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-static size_t	nsize(long n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		n *= -1;
-		i++;
-	}
-	while (n > 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
+static size_t	nsize(long n);
 
 char	*ft_itoa(int n)
 {
@@ -58,4 +40,24 @@ char	*ft_itoa(int n)
 	}
 	res[size] = nb + '0';
 	return (res);
+}
+
+static size_t	nsize(long n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		n *= -1;
+		i++;
+	}
+	while (n > 0)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
 }
