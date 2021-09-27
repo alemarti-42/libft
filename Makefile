@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/05/25 20:18:03 by alemarti         ###   ########.fr        #
+#    Updated: 2021/09/27 15:37:53 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,25 +65,14 @@ CFLAGS	= -Wall -Werror -Wextra
 
 all:		${NAME}
 	
-${NAME}:	${OBJS}
-			ar rc	${NAME} ${OBJS}
-			ranlib	${NAME}
-
+${NAME}:	${OBJS} ${OBJS_B}
+			ar rc	${NAME} ${OBJS} ${OBJS_B}
 
 clean:	
 			@${RM} ${OBJS} ${OBJS_B}
 
 fclean:		clean
 			@${RM} ${NAME}
-
-test:
-			@${CC} ${FLAGS} ${SRCS} main.c -o test.out
-			@./test.out
-			@rm test.out
-
-bonus:		${OBJS} ${OBJS_B}
-			ar rc ${NAME} ${OBJS} ${OBJS_B}
-			ranlib ${NAME}
 
 re:			fclean all
 
