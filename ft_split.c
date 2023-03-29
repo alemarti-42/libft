@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alemarti <alemarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 20:19:09 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/26 16:16:00 by alemarti         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:38:50 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 
 static int		count_words(const char *s, char c);
 static char		*stralloc(const char *s, char c);
+
+void	*free_split(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free (str);
+	return (NULL);
+}
 
 char	**ft_split(const char *s, char c)
 {
@@ -33,13 +47,14 @@ char	**ft_split(const char *s, char c)
 	while (s[++i])
 	{
 		if (is_separator == 1 && s[i] != c)
-			res[count++] = stralloc(&s[i], c);
-		if (s[i] == c)
-			is_separator = 1;
-		else
-			is_separator = 0;
+		{
+			res[count] = stralloc(&s[i], c);
+			if (!res[count++])
+				return (free_split(res));
+		}
+		is_separator = 1 * (s[i] == c);
 	}
-	res[count_words(s, c)] = 0;
+	res[count] = 0;
 	return (res);
 }
 
@@ -73,11 +88,15 @@ static char	*stralloc(const char *s, char c)
 
 	count = 0;
 	i = 0;
-	while (s[i] != c && s[i])
+	res = NULL;
+	while (s[i] && s[i] != c)
 	{
 		count++;
 		i++;
 	}
-	res = ft_substr(s, 0, count);
+	if (count != 0)
+		res = ft_substr(s, 0, count);
+	if (!res)
+		return (NULL);
 	return (res);
 }

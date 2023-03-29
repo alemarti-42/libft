@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alemarti <alemarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 19:11:36 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/25 20:39:30 by alemarti         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:31:58 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*res;
 	t_list	*swap;
+	t_list	*aux;
 
 	if (!lst || !f)
 		return (NULL);
 	res = NULL;
 	while (lst)
 	{
-		swap = ft_lstnew((f)(lst -> content));
+		aux = (f)(lst -> content);
+		swap = ft_lstnew(aux);
 		if (!swap)
 		{
+			(del)(aux);
 			ft_lstclear(&res, del);
 			return (NULL);
 		}

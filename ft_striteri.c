@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarti <alemarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 13:00:11 by alemarti          #+#    #+#             */
-/*   Updated: 2023/03/29 15:09:34 by alemarti         ###   ########.fr       */
+/*   Created: 2023/03/29 14:49:16 by alemarti          #+#    #+#             */
+/*   Updated: 2023/03/29 15:01:54 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
-	size_t	len;
+	int		i;
 
-	i = 0;
-	len = ft_strlen(src);
-	if (dstsize == 0)
-		return (len);
-	while (i < dstsize - 1 && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (len);
+	i = -1;
+	if (!s || !f)
+		return ;
+	while (s[++i])
+		f(i, &s[i]);
 }
-
-//Code for protecting segfault when null string is passed.
-// if (!src)
-// 	return (0);

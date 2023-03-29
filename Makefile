@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alemarti <alemarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/09/27 15:37:53 by alemarti         ###   ########.fr        #
+#    Updated: 2023/03/29 15:10:18 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS	= ft_memset.c	 	\
 		  ft_calloc.c 		\
 		  ft_strdup.c 		\
 		  ft_substr.c 		\
+		  ft_striteri.c		\
 		  ft_strjoin.c		\
 		  ft_strtrim.c		\
 		  ft_split.c		\
@@ -73,6 +74,8 @@ clean:
 
 fclean:		clean
 			@${RM} ${NAME}
+
+bonus:		${NAME}
 
 re:			fclean all
 
